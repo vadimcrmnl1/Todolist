@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Todolist/static/css/main.146f570e.css",
+    "main.js": "/Todolist/static/js/main.f6c5cbaa.js",
+    "index.html": "/Todolist/index.html",
+    "main.146f570e.css.map": "/Todolist/static/css/main.146f570e.css.map",
+    "main.f6c5cbaa.js.map": "/Todolist/static/js/main.f6c5cbaa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.146f570e.css",
+    "static/js/main.f6c5cbaa.js"
+  ]
+}
