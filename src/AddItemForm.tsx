@@ -6,12 +6,13 @@ import {IconButton, TextField} from "@mui/material";
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
-    placeholder: string
+
 }
 
-export const AddItemForm = (props: AddItemFormPropsType) => {
+export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
+
     const [newItemTitle, setNewItemTitle] = useState('');
-    const [error, setError] = useState<boolean>(false);
+    const [error, setError] = useState<boolean | null>(false);
     const errorText = <div>Title is required</div>
     const onChangeSetLocalTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setNewItemTitle(e.currentTarget.value)
@@ -26,7 +27,14 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
         }
         setNewItemTitle('')
     }
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && addItem()
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (error !== null) {
+            setError(null)
+        }
+        if (e.key === 'Enter') {
+            addItem()
+        }
+    }
 
     return (
         <div>
@@ -36,7 +44,7 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
                        style={{marginBottom: '10px'}}
                        className={error ? s.error : ''}
                        value={newItemTitle}
-                       placeholder={props.placeholder}
+                       label="Title"
                        onChange={onChangeSetLocalTitle}
                        onKeyDown={onKeyPressHandler}
             />
@@ -47,5 +55,5 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
             {error && <div className={s.errorMessage}>{errorText}</div>}
         </div>
     );
-};
+});
 

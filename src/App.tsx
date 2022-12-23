@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './App.css'
+import './App.module.css'
 import s from './Todolist.module.css'
 import {v1} from "uuid";
 import {AddItemForm} from "./AddItemForm";
@@ -140,7 +140,7 @@ function App() {
             <Container fixed style={{paddingTop: '30px'}}>
                 <div className={s.titleList}><b>ADD TODOLIST</b></div>
                 <Grid container>
-                    <AddItemForm placeholder={'Add new Todolist'} addItem={addTodoList}/>
+                    <AddItemForm addItem={addTodoList}/>
                 </Grid>
                 <Grid container spacing={4} style={{paddingTop: '20px'}}>
                     {todoListsComponents}
