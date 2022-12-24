@@ -10,10 +10,10 @@ import {createRoot} from "react-dom/client";
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#1e88e5'
+            main: '#4caf50'
         },
         secondary: {
-            main: '#f5a700'
+            main: '#ff9100'
         },
        type: 'light'
     }

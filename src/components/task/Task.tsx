@@ -1,8 +1,8 @@
 import React, {ChangeEvent, useCallback} from 'react'
 import {Checkbox, IconButton} from "@mui/material";
-import {EditableSpan} from "./EditableSpan";
+import {EditableSpan} from "../editable-span/EditableSpan";
 import {Delete} from "@mui/icons-material";
-
+import s from './Task.module.css'
 
 type TaskType = {
     id: string
@@ -30,16 +30,20 @@ export const Task = React.memo( (props: TaskPropsType) => {
     }, [props.changeTaskTitle, props.task.id,props.todolistId])
 
 
+
     return <div key={props.task.id} className={props.task.isDone ? "is-done" : ""}>
         <Checkbox
             checked={props.task.isDone}
             color="primary"
             onChange={onChangeHandler}
-        />
 
-        <EditableSpan title={props.task.title} changeTitle={onTitleChangeHandler} />
-        <IconButton onClick={onClickHandler}>
-            <Delete />
+        />
+        <span className={s.editableSpan}>
+            <EditableSpan title={props.task.title} changeTitle={onTitleChangeHandler} />
+        </span>
+
+        <IconButton onClick={onClickHandler} size={'small'}>
+            <Delete style={{color: '#ff7043', marginLeft: '5px'}} />
         </IconButton>
     </div>
 

@@ -1,22 +1,25 @@
-import React, {ChangeEvent, useCallback} from "react";
-import {TaskType, TodoListType} from "./App";
-import {EditableSpan} from "./EditableSpan";
+import React, {useCallback} from "react";
+import {TaskType, TodoListType} from "../../App";
+import {EditableSpan} from "../editable-span/EditableSpan";
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Delete} from "@mui/icons-material";
-import {AddItemForm} from "./AddItemForm";
-import {Button, Checkbox} from "@mui/material";
+import {AddItemForm} from "../add-item-form/AddItemForm";
+import {Button} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "./reducers/store";
-import {changeTodolistFilterAC, changeTodolistTitleAC, removeTodolistAC} from "./reducers/todolist-reducer";
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./reducers/tasks-reducer";
-import {Task} from "./Task";
+import {AppRootStateType} from "../../reducers/store";
+import {changeTodolistFilterAC, changeTodolistTitleAC, removeTodolistAC} from "../../reducers/todolist-reducer";
+import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "../../reducers/tasks-reducer";
+import {Task} from "../task/Task";
+import s from './TodolistWithRedux.module.css'
 
 type TodolistWithReduxPropsType = {
     todolist: TodoListType
 
 }
 
-export const TodolistWithRedux = React.memo(({todolist}: TodolistWithReduxPropsType) => {
+
+
+export const TodolistWithRedux = React.memo(({ todolist}: TodolistWithReduxPropsType) => {
     const {id, title, filter} = todolist
     let tasks = useSelector<AppRootStateType, Array<TaskType>>(state => state.tasks[id])
 
@@ -61,13 +64,13 @@ export const TodolistWithRedux = React.memo(({todolist}: TodolistWithReduxPropsT
 
 
     return (
-        <div>
-            <h3><EditableSpan title={title} changeTitle={changeTodolistTitle}/>
+        <div className={s.Container}>
+            <div className={s.editableSpan}><EditableSpan title={title} changeTitle={changeTodolistTitle}/>
                 <IconButton onClick={removeTodolist}>
                     <Delete/>
                 </IconButton>
-            </h3>
-            <AddItemForm addItem={addTask}/>
+            </div>
+            <AddItemForm addItem={addTask} title={'Task title'}/>
             <div>
                 {
                     tasks.map(t => <Task key={t.id}
@@ -82,12 +85,14 @@ export const TodolistWithRedux = React.memo(({todolist}: TodolistWithReduxPropsT
             <div>
                 <Button variant={filter === 'all' ? 'outlined' : 'text'}
                         onClick={onAllClickHandler}
-                        color={'inherit'}
+                        color={'warning'}
+
                 >All
                 </Button>
                 <Button variant={filter === 'active' ? 'outlined' : 'text'}
                         onClick={onActiveClickHandler}
-                        color={'primary'}>Active
+                        color={'success'}
+                >Active
                 </Button>
                 <Button variant={filter === 'completed' ? 'outlined' : 'text'}
                         onClick={onCompletedClickHandler}

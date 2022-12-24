@@ -30,7 +30,7 @@ export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
             ? <TextField id="outlined-basic"
                          variant="outlined"
                          size={'small'}
-                         style={{maxWidth: '150px'}}
+                         style={{width: '170px'}}
                          value={title}
                          onBlur={offEditMode}
                          onChange={onChangeSetLocalTitle}

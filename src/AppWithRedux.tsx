@@ -1,14 +1,14 @@
 import React, {useCallback} from 'react';
 import s from './App.module.css';
 
-import {AddItemForm} from './AddItemForm';
+import {AddItemForm} from './components/add-item-form/AddItemForm';
 import {AppBar, Button, Container, Grid, Paper, Toolbar, Typography} from "@mui/material";
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Menu} from "@mui/icons-material";
 import {addTodolistAC} from "./reducers/todolist-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./reducers/store";
-import {TodolistWithRedux} from "./TodolistWithRedux";
+import {TodolistWithRedux} from "./components/todolist/TodolistWithRedux";
 
 
 export type TaskType = {
@@ -47,7 +47,7 @@ function AppWithRedux() {
                     <IconButton edge="start" color="inherit" aria-label="menu">
                         <Menu/>
                     </IconButton>
-                    <Typography variant="h6">
+                    <Typography variant="h4" color='whitesmoke' fontFamily={('Maven Pro')}>
                         TODOLIST
                     </Typography>
                     <Button color="inherit">Login</Button>
@@ -55,7 +55,7 @@ function AppWithRedux() {
             </AppBar>
             <Container fixed>
                 <Grid container style={{padding: "20px"}}>
-                    <AddItemForm addItem={addTodolist}/>
+                    <AddItemForm addItem={addTodolist} title={'Todolist title'}/>
                 </Grid>
                 <Grid container spacing={3}>
                     {

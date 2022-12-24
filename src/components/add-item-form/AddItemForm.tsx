@@ -1,12 +1,12 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import s from "./Todolist.module.css";
+import s from "../todolist/Todolist.module.css";
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import {IconButton, TextField} from "@mui/material";
 
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
-
+    title: string
 }
 
 export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
@@ -44,7 +44,7 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
                        style={{marginBottom: '10px'}}
                        className={error ? s.error : ''}
                        value={newItemTitle}
-                       label="Title"
+                       label={props.title}
                        onChange={onChangeSetLocalTitle}
                        onKeyDown={onKeyPressHandler}
             />

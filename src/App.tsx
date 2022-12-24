@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import './App.module.css'
-import s from './Todolist.module.css'
+import s from './components/todolist/Todolist.module.css'
 import {v1} from "uuid";
-import {AddItemForm} from "./AddItemForm";
+import {AddItemForm} from "./components/add-item-form/AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
 
@@ -140,7 +140,7 @@ function App() {
             <Container fixed style={{paddingTop: '30px'}}>
                 <div className={s.titleList}><b>ADD TODOLIST</b></div>
                 <Grid container>
-                    <AddItemForm addItem={addTodoList}/>
+                    <AddItemForm addItem={addTodoList} title={'Title'}/>
                 </Grid>
                 <Grid container spacing={4} style={{paddingTop: '20px'}}>
                     {todoListsComponents}
