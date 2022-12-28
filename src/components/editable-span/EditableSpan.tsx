@@ -15,7 +15,7 @@ export const EditableSpan = React.memo((props: EditableSpanPropsType) => {
         setIsEditMode(true)
     }
     const offEditMode = () => {
-        console.log(props.changeTitle)
+
         props.changeTitle(title)
         setIsEditMode(false)
     }
